@@ -89,20 +89,7 @@ public class Cadastro {
 
     }
 
-    public boolean validaUsuario(String usuario, String senha, ArrayList<Cadastro> a){
-        for(int i=0; i < a.size(); i++ ){
-            if(usuario.equals(a.get(i).getUsuario())){
-                if(senha.equals(a.get(i).getSenha())){
-                    return true;
-                }else{
-                    return false;
-                }
-            }{
-                return false;
-            }
-        }
-      return false;
-    }
+
 
     @Override
     public String toString() {

@@ -9,51 +9,76 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner ler = new Scanner(System.in);
-        ArrayList<Cadastro> cadastro = new ArrayList();
+
         ArrayList<Cliente> clientes = new ArrayList<>();
         ArrayList<Tecnico> tecnicos = new ArrayList<>();
         ArrayList<Gerente> gerentes = new ArrayList<>();
         ArrayList<Chamado> chamados = new ArrayList<>();
         String nomeValida;
         String senhaValida;
+        int tipo=0;
         int i=0;
+        int cont=0;
 
-        if (cadastro.size() ==0){
+        if (gerentes.size() ==0){
             System.out.println();
-            System.out.println("*** Bem vindo ao Sistema você é o Primeiro Usuario!! ***");
+            System.out.println("*** Bem vindo ao Sistema você é o Primeiro Usuario Gerente!! ***");
             System.out.println();
             System.out.println("A partir de agora vamos coletar seus dados, ok? ");
             System.out.println();
-            Cadastro c = new Cadastro();
-            c.cadastraUsuario();
-
+            Gerente g = new Gerente();
+            g.cadastraGerente();
+            gerentes.add(g);
+            System.out.println("*** Usuario cadastrado com sucesso ***");
         }
 
 
-            System.out.println("\n\n*** Sistema de chamados para suporte ***");
+        System.out.println("\n\n*** Sistema de chamados para suporte ***");
         do{
-            System.out.printf("Usuario: ");
-            nomeValida = ler.next();
-            System.out.printf("Senha: ");
-            senhaValida = ler.next();
-            Cadastro v = new Cadastro();
-            if(v.validaUsuario(nomeValida,senhaValida, cadastro)){
-               Cadastro c1 = new Cadastro();
-                if(c1.getNivel()==1){
-                    Gerente g = new Gerente();
-
-                }else if(c1.getNivel()==2){
-                    Cliente cliente = new Cliente();
-
-                }else if(c1.getNivel()==3){
-                    Tecnico t = new Tecnico();
-
+            System.out.printf("\n Informe seu Usuario: 1-Gerente| 2-Tecnico | 3-Cliente: ");
+            do{
+                if(cont >=1){
+                    System.out.println(" *** Tipo de usuario incorreto! ***");
+                    System.out.printf("Informe seu Usuario: 1-Gerente| 2-Tecnico | 3-Cliente: ");
                 }
+                tipo = ler.nextInt();
 
+                cont++;
+            }while (tipo != 1 && tipo !=2 && tipo !=3);
+            switch (tipo){
+                case 1:{
+                    System.out.printf("Usuario: ");
+                    nomeValida = ler.next();
+                    System.out.printf("Senha: ");
+                    senhaValida = ler.next();
+                    Gerente g = new Gerente();
+                    if(g.validaUsuario(nomeValida,senhaValida, gerentes)){
+                        g.dashbord(gerentes,tecnicos, clientes);
 
-            }else{
-                System.out.println("Usuario ou Senha incorretos! ");
+                    }else{
+                        System.out.println("Usuario ou Senha incorretos! ");
+                    }
+                    break;
+                }
+                case 2:{
+                    System.out.printf("Usuario: ");
+                    nomeValida = ler.next();
+                    System.out.printf("Senha: ");
+                    senhaValida = ler.next();
+                    break;
+                }
+                case 3:{
+                    System.out.printf("Usuario: ");
+                    nomeValida = ler.next();
+                    System.out.printf("Senha: ");
+                    senhaValida = ler.next();
+                    break;
+                }
             }
+
+
+
+
 
         }while (i != 1);
 
