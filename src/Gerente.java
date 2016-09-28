@@ -12,6 +12,9 @@ public class Gerente {
     private int nivel;
     private double telefone;
     Scanner ler = new Scanner(System.in);
+    ArrayList<Cliente> clientes;
+    ArrayList<Tecnico> tecnicos;
+    ArrayList<Gerente> gerentes;
 
     public String getUsuario() {
         return usuario;
@@ -87,10 +90,50 @@ public class Gerente {
         setNivel(nivel);
 
     }
+    public void cadastraUsuario(ArrayList<Gerente> gerentes, ArrayList<Tecnico> tecnicos, ArrayList<Cliente> clientes){
+        int nivel =0, cont=0;
+
+        System.out.printf("Nivel: 1-Master| 2-Tecnico | 3-Cliente|  ");
+        do{
+            if(cont >= 1){
+                System.out.println("Nivel Incorreto");
+                System.out.printf("Nivel: 1-Master| 2-Tecnico | 3-Cliente|  ");
+            }
+            nivel = ler.nextInt();
+            cont++;
+        }while (nivel != 1 && nivel !=2 && nivel !=3);
+        switch (nivel){
+            case 1:{
+                Gerente g = new Gerente();
+                g.cadastraGerente();
+                gerentes.add(g);
+                System.out.println("Gerente Cadastrado com sucesso");
+                break;
+            }
+            case 2:{
+                Tecnico t = new Tecnico();
+                t.cadastraTecnico();
+                tecnicos.add(t);
+                System.out.println("Tecnico Cadastrado com sucesso");
+                break;
+            }
+            case 3:{
+                Cliente c = new Cliente();
+                c.cadastraCliente();
+                clientes.add(c);
+                System.out.println("Cliente Cadastrado com sucesso");
+                break;
+            }
+
+        }
+
+    }
     public void dashbord(ArrayList<Gerente> gerentes, ArrayList<Tecnico> tecnicos, ArrayList<Cliente> clientes){
         int tipo=0;
         System.out.println("Bem vindo ao Painel do Gerente: ");
-        System.out.printf("Informe o que deseja: 1-Listar | ");
+        do{
+
+        System.out.printf("Informe o que deseja: 1-Listar | 2-Cadastrar Usuario| 4-Sair do Sistema");
         tipo = ler.nextInt();
         switch (tipo){
             case 1:{
@@ -122,7 +165,14 @@ public class Gerente {
                 }
                 break;
             }
+            case 2:{
+                System.out.println("*** Cadastro de Usuarios ***");
+                cadastraUsuario(gerentes,tecnicos,clientes);
+                break;
+            }
         }
+
+        }while (tipo !=4);
     }
     public boolean validaUsuario(String usuario, String senha, ArrayList<Gerente> g){
         for(int i=0; i < g.size(); i++ ){
