@@ -75,6 +75,8 @@ public class Main {
                     nomeValida = ler.next();
                     System.out.printf("Senha: ");
                     senhaValida = ler.next();
+                    Cliente c = new Cliente();
+                    c.validaUsuario(nomeValida,senhaValida,clientes);
                     break;
                 }
             }

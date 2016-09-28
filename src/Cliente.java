@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -76,7 +77,33 @@ public class Cliente {
         setNivel(nivelCliente);
     }
 
-    public void dashbord(){
-        System.out.println("Bem vindo a DASHBORD do Cliente");
+
+    public boolean validaUsuario(String usuario, String senha, ArrayList<Cliente>c){
+        for(int i=0; i < c.size(); i++ ){
+            if(usuario.equals(c.get(i).getUsuario())){
+                if(senha.equals(c.get(i).getSenha())){
+                    dashbord(usuario,senha, c);
+                }else{
+                    return false;
+                }
+            }{
+                return false;
+            }
+        }
+        return false;
+    }
+    public void dashbord(String usuario, String senha,ArrayList<Cliente> c){
+        for(int i=0; i < c.size(); i++){
+            if(usuario.equals(c.get(i).getUsuario())){
+                if(senha.equals(c.get(i).getSenha())){
+                    System.out.println("Bem vindo a DASHBORD DO Cliente "+c.get(i).getNome());
+
+
+
+                }
+            }
+        }
+
+
     }
 }

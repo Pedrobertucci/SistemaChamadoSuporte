@@ -132,7 +132,7 @@ public class Gerente {
         System.out.println("Bem vindo ao Painel do Gerente: ");
         do{
 
-        System.out.printf("Informe o que deseja: 1-Listar | 2-Cadastrar Usuario| 4-Sair do Sistema");
+        System.out.printf("Informe o que deseja: 1-Listar | 2-Cadastrar Usuario| 3-deletar|  4-Sair do Sistema");
         tipo = ler.nextInt();
         switch (tipo){
             case 1:{
@@ -159,6 +159,7 @@ public class Gerente {
                             i++;
                             System.out.println("["+i+"] Nome: "+c.getNome());
                         }
+                        break;
                     }
 
                 }
@@ -168,6 +169,10 @@ public class Gerente {
                 System.out.println("*** Cadastro de Usuarios ***");
                 cadastraUsuario(gerentes,tecnicos,clientes);
                 break;
+            }
+            case 3:{
+                System.out.println("*** Deletando Usuario ***");
+                deletaUsuarios(gerentes,tecnicos,clientes);
             }
 
         }
@@ -188,7 +193,31 @@ public class Gerente {
         }
         return false;
     }
+    public void deletaUsuarios(ArrayList<Gerente> g, ArrayList<Tecnico> t, ArrayList<Cliente> c){
+        int tipo=0, i;
 
+        System.out.println(" 1- GERENTE | 2-TECNICO | 3-CLIENTE");
+        tipo = ler.nextInt();
+        switch (tipo){
+            case 1:{
+                String nome;
+                System.out.printf("Informe nome do gerente: ");
+                nome = ler.next();
+                for ( i=0; i < g.size(); i++){
+                    if(nome.equals(g.get(i).getNome())){
+                        g.remove(i);
+                    }
+                    if (i == g.size()){
+                        System.out.println("*** NENHUM GERENTE ENCONTRADO *** ");
+                    }
+                }
+                System.out.println("*** USUARIO DELETADO COM SUCESSO ***");
+
+                break;
+            }
+        }
+
+    }
     @Override
     public String toString() {
         return "Gerente{" +

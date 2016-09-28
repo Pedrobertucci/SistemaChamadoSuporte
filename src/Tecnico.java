@@ -11,7 +11,12 @@ public class Tecnico {
     private String email;
     private int nivel;
     private double telefone;
+    private int nChamado=0;
     Scanner ler = new Scanner(System.in);
+
+    public int getnChamado() {return nChamado;}
+
+    public void setnChamado(int nChamado) {this.nChamado = nChamado; }
 
     public String getUsuario() {
         return usuario;
@@ -96,7 +101,10 @@ public class Tecnico {
         for(int i=0; i < t.size(); i++){
             if(usuario.equals(t.get(i).getUsuario())){
                 if(senha.equals(t.get(i).getSenha())){
-                    System.out.println("Bem vindo a DASHBORD DO TECNICO "+t.get(i).getSenha());
+                    System.out.println("Bem vindo a DASHBORD DO TECNICO "+t.get(i).getNome());
+                    System.out.println("1-Meus chamados ");
+
+
                 }
             }
         }
