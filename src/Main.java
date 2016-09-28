@@ -35,7 +35,7 @@ public class Main {
 
         System.out.println("\n\n*** Sistema de chamados para suporte ***");
         do{
-            System.out.printf("\n Informe seu Usuario: 1-Gerente| 2-Tecnico | 3-Cliente: ");
+            System.out.printf("\nInforme seu Usuario: 1-Gerente| 2-Tecnico | 3-Cliente: ");
             do{
                 if(cont >=1){
                     System.out.println(" *** Tipo de usuario incorreto! ***");
@@ -45,6 +45,7 @@ public class Main {
 
                 cont++;
             }while (tipo != 1 && tipo !=2 && tipo !=3);
+            cont=0;
             switch (tipo){
                 case 1:{
                     System.out.printf("Usuario: ");
@@ -65,6 +66,8 @@ public class Main {
                     nomeValida = ler.next();
                     System.out.printf("Senha: ");
                     senhaValida = ler.next();
+                    Tecnico t = new Tecnico();
+                    t.validaUsuario(nomeValida, senhaValida, tecnicos);
                     break;
                 }
                 case 3:{

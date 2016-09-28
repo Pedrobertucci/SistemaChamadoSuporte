@@ -65,9 +65,9 @@ public class Gerente {
     }
 
     public void cadastraGerente(){
-        int nivel =0, cont=0;
+        int nivel =1, cont=0;
 
-        System.out.println("*** Bem vindo! a central do cadastro de usuario do Sistema ***");
+        System.out.println("*** Bem vindo! a central do cadastro de Gerente do Sistema ***");
         System.out.printf("Usuario: ");
         setUsuario(ler.next());
         System.out.printf("Senha: ");
@@ -78,17 +78,16 @@ public class Gerente {
         setEmail(ler.next());
         System.out.printf("Telefone: ");
         setTelefone(ler.nextDouble());
-        System.out.printf("Nivel: 1-Master| 2-Tecnico | 3-Cliente|  ");
-        do{
+        setNivel(nivel);
+        /*
+        *  do{
             if(cont >= 1){
                 System.out.println("Nivel Incorreto");
                 System.out.printf("Nivel: 1-Master| 2-Tecnico | 3-Cliente|  ");
             }
             nivel = ler.nextInt();
             cont++;
-        }while (nivel != 1 && nivel !=2 && nivel !=3);
-        setNivel(nivel);
-
+        }while (nivel != 1 && nivel !=2 && nivel !=3);*/
     }
     public void cadastraUsuario(ArrayList<Gerente> gerentes, ArrayList<Tecnico> tecnicos, ArrayList<Cliente> clientes){
         int nivel =0, cont=0;
@@ -170,6 +169,7 @@ public class Gerente {
                 cadastraUsuario(gerentes,tecnicos,clientes);
                 break;
             }
+
         }
 
         }while (tipo !=4);

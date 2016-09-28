@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -74,6 +75,32 @@ public class Tecnico {
         System.out.printf("Telefone: ");
         setTelefone(ler.nextDouble());
         setNivel(nivelTec);
+
+    }
+    public void validaUsuario(String usuario, String senha, ArrayList<Tecnico> t){
+        for(int i=0; i < t.size(); i++ ){
+            if(usuario.equals(t.get(i).getUsuario())){
+                if(senha.equals(t.get(i).getSenha())){
+                   dashbord(usuario,senha, t);
+                }else{
+                    System.out.println("Usuario Incorreto! ");
+                }
+            }else{
+                System.out.println("Error");
+            }
+        }
+
+    }
+    public void dashbord(String usuario, String senha, ArrayList<Tecnico> t){
+
+        for(int i=0; i < t.size(); i++){
+            if(usuario.equals(t.get(i).getUsuario())){
+                if(senha.equals(t.get(i).getSenha())){
+                    System.out.println("Bem vindo a DASHBORD DO TECNICO "+t.get(i).getSenha());
+                }
+            }
+        }
+
 
     }
 }

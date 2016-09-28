@@ -75,4 +75,8 @@ public class Cliente {
         setTelefone(ler.nextDouble());
         setNivel(nivelCliente);
     }
+
+    public void dashbord(){
+        System.out.println("Bem vindo a DASHBORD do Cliente");
+    }
 }
