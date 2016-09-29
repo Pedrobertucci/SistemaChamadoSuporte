@@ -78,11 +78,22 @@ public class Cliente {
     }
 
 
-    public boolean validaUsuario(String usuario, String senha, ArrayList<Cliente>c){
+    public boolean validaUsuario(String usuario, String senha, ArrayList<Cliente>c, ArrayList<Tecnico>t, ArrayList<Chamado> chamado){
+        String valida;
+        int va=0;
         for(int i=0; i < c.size(); i++ ){
             if(usuario.equals(c.get(i).getUsuario())){
                 if(senha.equals(c.get(i).getSenha())){
-                    dashbord(usuario,senha, c);
+                    do{
+                        dashbord(usuario,senha, c,t,chamado);
+                        System.out.println("Deseja Sair? S-sim | N nao");
+                        valida = ler.next();
+                        if (valida.toLowerCase().equals("n")){
+                            va++;
+                        }
+                    }while (va != 0);
+
+                    return true;
                 }else{
                     return false;
                 }
@@ -92,13 +103,28 @@ public class Cliente {
         }
         return false;
     }
-    public void dashbord(String usuario, String senha,ArrayList<Cliente> c){
+    public void dashbord(String usuario, String senha,ArrayList<Cliente> c,ArrayList<Tecnico>t, ArrayList<Chamado> chamado){
+        int  tipo=0;
         for(int i=0; i < c.size(); i++){
             if(usuario.equals(c.get(i).getUsuario())){
                 if(senha.equals(c.get(i).getSenha())){
                     System.out.println("Bem vindo a DASHBORD DO Cliente "+c.get(i).getNome());
-
-
+                    System.out.println("1-Adicionar chamado | 2-Lista seus Chamados | ");
+                    tipo = ler.nextInt();
+                    switch (tipo){
+                        case 1:{
+                            Chamado chamado1 = new Chamado();
+                            chamado1.cadastraChamado(usuario,senha,c,t,chamado);
+                            chamado.add(chamado1);
+                            System.out.println("*** USUARIO CADASTRADO COM SUCESSO ***");
+                            break;
+                        }
+                        case 2:{
+                            Chamado chamado2 = new Chamado();
+                            chamado2.visualizaChamados(chamado);
+                            break;
+                        }
+                    }
 
                 }
             }

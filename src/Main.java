@@ -76,23 +76,11 @@ public class Main {
                     System.out.printf("Senha: ");
                     senhaValida = ler.next();
                     Cliente c = new Cliente();
-                    c.validaUsuario(nomeValida,senhaValida,clientes);
+                    c.validaUsuario(nomeValida,senhaValida,clientes,tecnicos,chamados);
+
                     break;
                 }
             }
-
-
-
-
-
         }while (i != 1);
-
-
-
-
-
-
-
-
     }
 }

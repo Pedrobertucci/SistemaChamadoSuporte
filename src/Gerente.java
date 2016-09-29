@@ -194,12 +194,13 @@ public class Gerente {
         return false;
     }
     public void deletaUsuarios(ArrayList<Gerente> g, ArrayList<Tecnico> t, ArrayList<Cliente> c){
-        int tipo=0, i;
+        int tipo=0;
 
         System.out.println(" 1- GERENTE | 2-TECNICO | 3-CLIENTE");
         tipo = ler.nextInt();
         switch (tipo){
             case 1:{
+                int i;
                 String nome;
                 System.out.printf("Informe nome do gerente: ");
                 nome = ler.next();
@@ -213,6 +214,36 @@ public class Gerente {
                 }
                 System.out.println("*** USUARIO DELETADO COM SUCESSO ***");
 
+                break;
+            }
+            case 2:{
+                String nome;
+                System.out.printf("Informe tecnico: ");
+                nome = ler.next();
+                for (int i=0; i < t.size(); i++){
+                    if(nome.equals(t.get(i).getNome())){
+                        t.remove(i);
+                    }
+                    if (i == t.size()){
+                        System.out.println("*** NENHUM TECNICO ENCONTRADO *** ");
+                    }
+                }
+                System.out.println("*** TECNICO DELETO COM SUCESSO ***");
+                break;
+            }
+            case 3:{
+                String nome;
+                System.out.printf("Informe cliente: ");
+                nome = ler.next();
+                for (int i=0; i < c.size(); i++){
+                    if(nome.equals(c.get(i).getNome())){
+                        c.remove(i);
+                    }
+                    if (i == c.size()){
+                        System.out.println("*** NENHUM CLIENTE ENCONTRADO *** ");
+                    }
+                }
+                System.out.println("*** TECNICO CLIENTE COM SUCESSO ***");
                 break;
             }
         }
